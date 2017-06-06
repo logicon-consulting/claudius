@@ -1,0 +1,29 @@
+#!/bin/sh
+
+# Sets build environment for the projectspecified by PROJECT_NAME
+
+PROJECT_NAME=claudius
+
+PRJ_ROOT="`pwd`"
+
+# Export config template
+export TEMPLATECONF="${PRJ_ROOT}/meta-${PROJECT_NAME}/conf"
+
+# Update submodules
+pushd "$PRJ_ROOT" > /dev/null 2>&1
+git pull
+git submodule init
+git submodule update
+popd > /dev/null 2>&1
+
+# Set build directory
+if [ -n build ]; then
+    set -- build
+fi
+
+# Init 
+. $PRJ_ROOT/poky/oe-init-build-env
+
+unset PRJ_ROOT
+unset TEMPLATECONF
+unset PROJECT_NAME
