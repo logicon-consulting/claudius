@@ -24,6 +24,12 @@ fi
 # Init 
 . $PRJ_ROOT/poky/oe-init-build-env
 
+# Setup for parallel make parameters
+CPUS=$(grep -c processor /proc/cpuinfo)
+grep -q '^#BB_NUMBER_THREADS' conf/local.conf && sed -i "s/^#BB_NUMBER_THREADS.*$/BB_NUMBER_THREADS = \"${CPUS}\"/" conf/local.conf
+grep -q '^#PARALLEL_MAKE' conf/local.conf && sed -i "s/^#PARALLEL_MAKE.*$/PARALLEL_MAKE = \"-j ${CPUS}\"/" conf/local.conf
+
 unset PRJ_ROOT
 unset TEMPLATECONF
 unset PROJECT_NAME
+

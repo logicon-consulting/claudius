@@ -1,0 +1,5 @@
+
+Common targets are:
+
+    rpi-basic-image
+
