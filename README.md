@@ -13,7 +13,7 @@ In my case they are:
 `/usr/lib/x86_64-linux-gnu/odbc/libodbcmyS.so`
 
 ### Setup Driver 
-Helpful link to ubderstand drivers and templates http://www.unixodbc.org/odbcinst.html
+Helpful link to understand drivers and templates http://www.unixodbc.org/odbcinst.html
 
 Edit contents of `/etc/odbcinst.ini`
 ```
